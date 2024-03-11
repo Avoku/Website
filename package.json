@@ -1,0 +1,27 @@
+{
+    "name": "website",
+    "type": "module",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro",
+        "astro": "astro",
+        "build": "astro check && astro build",
+        "prettify": "prettier --write ."
+    },
+    "dependencies": {
+        "@astrojs/check": "^0.5.7",
+        "astro": "^4.5.0",
+        "prettier": "^3.2.5",
+        "sass": "^1.71.1",
+        "typescript": "^5.4.2"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^19.0.3",
+        "@commitlint/config-conventional": "^19.0.3",
+        "@typescript-eslint/parser": "^7.1.1",
+        "eslint": "^8.57.0",
+        "eslint-plugin-astro": "^0.31.4",
+        "husky": "^9.0.11"
+    }
+}
