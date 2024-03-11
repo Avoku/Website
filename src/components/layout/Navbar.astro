@@ -1,0 +1,69 @@
+---
+import Logo from '~components/common/Logo.astro'
+
+/** Data */
+import { Links } from '~data/links'
+
+const isActivePage = (path: string): boolean => {
+    return Astro.url.pathname === path
+}
+---
+
+<div id="navbar">
+    <nav>
+        <Logo fill="white" />
+
+        <ul>
+            {
+                Links.map((item) => (
+                    <li class={isActivePage ? 'active' : ''}>
+                        <a href={item.href}>{item.text}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+</div>
+
+<style lang="scss">
+    div#navbar {
+        width: 100%;
+        padding: 20px 0;
+
+        nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .logo {
+                height: 60px;
+                width: 60px;
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                font-size: 16px;
+                list-style: none;
+
+                li {
+                    a {
+                        color: white;
+                        font-weight: 600;
+                        text-decoration: none;
+                    }
+
+                    &.active {
+                        background-color: black;
+                    }
+                }
+            }
+        }
+    }
+</style>
