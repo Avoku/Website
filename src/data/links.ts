@@ -15,12 +15,12 @@ export const Links: Link[] = [
         href: "/"
     },
     {
-        text: "Home",
-        href: "/"
+        text: "Ranked Bot",
+        href: "/rbot"
     },
     {
-        text: "Home",
-        href: "/"
+        text: "FAQ",
+        href: "/faq"
     }
 ]
 

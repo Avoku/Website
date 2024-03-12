@@ -4,15 +4,61 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout title="Welcome to Astro.">
     <main>
-        <h1>Hello World!</h1>
-		<p>This is a paragraph.</p>
+        <section id="landing">
+            <h1>We develop technologoy</h1>
+            <p>This is a paragraph.</p>
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                <ellipse
+                    fill="url(#gradient)"
+                    cx="250"
+                    cy="250"
+                    rx="250"
+                    ry="100"></ellipse>
+                <defs>
+                    <linearGradient
+                        id="gradient"
+                        x1="1000"
+                        x2="-90"
+                        gradientUnits="userSpaceOnUse"
+                    >
+                        <stop stop-color="#b545ee60"></stop>
+                        <stop offset={1} stop-color="#3545fe60"></stop>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </section>
     </main>
 </Layout>
 
 <style lang="scss">
     main {
+        #landing {
+            position: relative;
+            z-index: 1;
+
+            height: fit-content;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         h1 {
+            color: #d7d5fe;
             font-size: 2em;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            z-index: -1;
+
+            height: 900px;
+            width: 900px;
+
+            pointer-events: none;
+            filter: blur(7em);
         }
     }
 </style>

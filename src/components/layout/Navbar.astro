@@ -1,6 +1,4 @@
 ---
-import Logo from '~components/common/Logo.astro'
-
 /** Data */
 import { Links } from '~data/links'
 
@@ -11,7 +9,16 @@ const isActivePage = (path: string): boolean => {
 
 <div id="navbar">
     <nav>
-        <Logo fill="white" />
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 300 300"
+            fill="white"
+            ><path
+                d="M150.43026,38.6335l58.05789,86.20939L150,102.58786L44.24684,261.3665h-43.81658l150-222.733Zm149.13948,222.733h-43.81658L165.90379,131.19485l42.58437,14.33889L299.56974,261.3665Zm-238.88975,0l21.853096-32.805355h152.679513L257.799827,261.3665h-197.119837Z"
+                transform="translate(0-.543765)"
+                fill="#fff"
+                stroke-width="0"></path></svg
+        >
 
         <ul>
             {
@@ -31,7 +38,7 @@ const isActivePage = (path: string): boolean => {
         padding: 20px 0;
 
         nav {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
 
@@ -39,7 +46,7 @@ const isActivePage = (path: string): boolean => {
             justify-content: space-between;
             align-items: center;
 
-            .logo {
+            svg {
                 height: 60px;
                 width: 60px;
             }
@@ -49,11 +56,12 @@ const isActivePage = (path: string): boolean => {
                 align-items: center;
                 gap: 12px;
 
-                font-size: 16px;
+                font-size: 18px;
                 list-style: none;
 
                 li {
                     a {
+                        font-family: var(--mono-font);
                         color: white;
                         font-weight: 600;
                         text-decoration: none;
