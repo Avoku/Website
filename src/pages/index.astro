@@ -1,12 +1,67 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import { Code } from 'astro:components'
+
+/** Components */
+import Layout from '~layouts/Layout.astro'
+import Button from '~components/common/Button.astro'
+
+/** Data */
+import { Socials } from '~data/links'
+
+const headerBlock = `
+package com.kasp.rankedbot.commands;
+
+import com.kasp.rankedbot.CommandSubsystem;
+import com.kasp.rankedbot.perms.Perms;
+
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.TextChannel;
+
+public class Command {
+    private String command;
+    private String usage;
+    private String[] aliases;
+    private String description;
+    private CommandSubsystem subsystem;
+
+    public Command (String command, String usage, String[] aliases, String description, CommandSubsystem subsystem) {
+        System.out.println(command + " command successfully loaded");
+        this.command = command;
+        this.usage = usage;
+        this.aliases = aliases;
+        this.description = description;
+        this.subsystem = subsystem;
+    }
+
+    public void execute(String[] args, Guild guild, Member sender, TextChannel channel, Message msg) {
+        System.out.println("Something went wrong...");
+    }
+}
+`
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Home | Avoku">
     <main>
-        <section id="landing">
-            <h1>We develop technologoy</h1>
-            <p>This is a paragraph.</p>
+        <header>
+            <div class="content-wrap">
+                <h1>
+                    A dedicated and passionate team of developers, creating and
+                    developing new technology.
+                </h1>
+                <div class="link-wrap">
+                    <Button href="/rbot">About Us</Button>
+                    {
+                        Socials.map((item) => (
+                            <a href={item.href}>
+                                <i class={`fa-brands fa-${item.name}`} />
+                            </a>
+                        ))
+                    }
+                </div>
+                <Code lang="java" theme="night-owl" code={headerBlock} />
+            </div>
             <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
                 <ellipse
                     fill="url(#gradient)"
@@ -26,27 +81,97 @@ import Layout from '../layouts/Layout.astro'
                     </linearGradient>
                 </defs>
             </svg>
-        </section>
+        </header>
     </main>
 </Layout>
 
 <style lang="scss">
     main {
-        #landing {
+        overflow: hidden;
+
+        header {
             position: relative;
             z-index: 1;
 
+            min-height: 350px;
             height: fit-content;
             width: 100%;
+
+            padding-bottom: 50px;
+            margin: 0 auto;
 
             display: flex;
             justify-content: center;
             align-items: center;
-        }
 
-        h1 {
-            color: #d7d5fe;
-            font-size: 2em;
+            .content-wrap {
+                position: relative;
+
+                width: 1000px;
+                padding: 0 20px;
+
+                margin: 50px auto 0 auto;
+
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                h1 {
+                    max-width: 850px;
+                    color: #d7d5fe;
+                    font-size: 3em;
+                }
+
+                pre {
+                    position: absolute;
+                    overflow: hidden;
+
+                    top: -50px;
+                    right: -450px;
+
+                    max-height: 620px;
+                    pointer-events: none;
+
+                    background-color: transparent !important;
+                    z-index: -1;
+
+                    &::after {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        content: '';
+
+                        height: 100%;
+                        width: 100%;
+
+                        background: linear-gradient(
+                            to left,
+                            #12141890,
+                            #121418
+                        );
+                    }
+                }
+            }
+
+            .link-wrap {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                i {
+                    color: #e0dfff;
+                    font-size: 22px;
+                    transition: opacity 0.2s ease;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+
+                    &:active {
+                        scale: 0.9;
+                    }
+                }
+            }
         }
 
         svg {

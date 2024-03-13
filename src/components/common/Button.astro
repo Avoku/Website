@@ -1,0 +1,61 @@
+---
+interface Props {
+    href?: string
+    onClick?: () => void
+}
+
+const { href, onClick } = Astro.props
+---
+
+{
+    href && (
+        <a href={href}>
+            <button>
+                <slot />
+            </button>
+        </a>
+    )
+}
+{
+    onClick && (
+        <button>
+            <slot />
+        </button>
+    )
+}
+
+<style lang="scss" scoped>
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        padding: 10px 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        font-family: var(--mono-font);
+        color: #4c4975;
+        font-size: 16px;
+        font-weight: 700;
+
+        background-color: white;
+        border-radius: 99em;
+
+        border: none;
+
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.6;
+        }
+        
+        &:active {
+            scale: 0.95;
+        }
+    }
+</style>

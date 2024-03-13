@@ -3,7 +3,7 @@
 import { Links } from '~data/links'
 
 const isActivePage = (path: string): boolean => {
-    return Astro.url.pathname === path
+    return path === Astro.url.pathname
 }
 ---
 
@@ -23,7 +23,7 @@ const isActivePage = (path: string): boolean => {
         <ul>
             {
                 Links.map((item) => (
-                    <li class={isActivePage ? 'active' : ''}>
+                    <li class={isActivePage(item.href) ? 'active' : ''}>
                         <a href={item.href}>{item.text}</a>
                     </li>
                 ))
@@ -47,28 +47,32 @@ const isActivePage = (path: string): boolean => {
             align-items: center;
 
             svg {
-                height: 60px;
-                width: 60px;
+                height: 45px;
+                width: 45px;
             }
 
             ul {
                 display: flex;
                 align-items: center;
-                gap: 12px;
+                gap: 24px;
 
-                font-size: 18px;
+                font-size: 16px;
                 list-style: none;
 
                 li {
                     a {
                         font-family: var(--mono-font);
                         color: white;
-                        font-weight: 600;
+                        font-weight: 200;
                         text-decoration: none;
                     }
 
                     &.active {
-                        background-color: black;
+                        border-bottom: 1px solid #a9a4ff;
+                    }
+
+                    &:active {
+                        scale: 0.95;
                     }
                 }
             }

@@ -11,17 +11,26 @@ interface Social {
 
 export const Links: Link[] = [
     {
-        text: "Home",
-        href: "/"
+        text: 'Home',
+        href: '/',
     },
     {
-        text: "Ranked Bot",
-        href: "/rbot"
+        text: 'Ranked Bot',
+        href: '/rbot',
     },
     {
-        text: "FAQ",
-        href: "/faq"
-    }
+        text: 'FAQ',
+        href: '/faq',
+    },
 ]
 
-export const Socials: Social[] = []
+export const Socials: Social[] = [
+    {
+        name: 'github',
+        href: '/github',
+    },
+    {
+        name: 'discord',
+        href: '/discord',
+    },
+]
