@@ -1,15 +1,17 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'button'> {
     href?: string
     onClick?: () => void
 }
 
-const { href, onClick } = Astro.props
+const { href, onClick, ...rest } = Astro.props
 ---
 
 {
     href && (
-        <a href={href}>
+        <a href={href} {...rest}>
             <button>
                 <slot />
             </button>
@@ -18,7 +20,7 @@ const { href, onClick } = Astro.props
 }
 {
     onClick && (
-        <button>
+        <button {...rest}>
             <slot />
         </button>
     )
@@ -30,30 +32,29 @@ const { href, onClick } = Astro.props
     }
 
     button {
-        padding: 10px 20px;
+        padding: 12px 25px;
 
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 5px;
 
-        font-family: var(--mono-font);
         color: #4c4975;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
 
         background-color: white;
         border-radius: 99em;
+        border: 1px solid white;
 
-        border: none;
-
+        transition: background-color 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
         cursor: pointer;
-        transition: opacity 0.2s ease;
 
         &:hover {
-            opacity: 0.6;
+            color: white;
+            background-color: #ffffff20;
         }
-        
+
         &:active {
             scale: 0.95;
         }

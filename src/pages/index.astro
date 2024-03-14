@@ -4,6 +4,7 @@ import { Code } from 'astro:components'
 /** Components */
 import Layout from '~layouts/Layout.astro'
 import Button from '~components/common/Button.astro'
+import Card from '~components/common/Card.astro'
 
 /** Data */
 import { Socials } from '~data/links'
@@ -82,6 +83,49 @@ public class Command {
                 </defs>
             </svg>
         </header>
+
+        <section class="head-about">
+            <div class="card-wrap">
+                <Card icon="check" title="Trusted">
+                    We are trusted by 400+ people and communities utilizing our
+                    projects.</Card
+                >
+                <Card icon="laptop" title="Active Support">
+                    We are able to assist anyone in our Discord server whether
+                    its code related or issues related by creating a ticket.</Card
+                >
+                <Card icon="code" title="Open-source">
+                    We love open source! Like everyone else, we open source most
+                    of our projects to share our hard work and allow the
+                    community to help guide us on the right path.</Card
+                >
+            </div>
+            <div class="quote-wrap">
+                <img src="/assets/img/avatar/naibuu.webp" loading="lazy" />
+                <p>
+                    "Avoku started off as a fun side project, but it's grown into
+                    something special. We've made cool stuff that people love
+                    using, and we're all about sharing and helping out in the
+                    community whenever we can."
+                </p>
+            </div>
+        </section>
+
+        <section class="rbot-cta">
+            <div>
+                <span>Free to use!</span>
+                <h1>Try out our Ranked bot for Discord!</h1>
+                <p>
+                    Packed with plenty of features such as statistics, utilities
+                    for maps, ranks, and more! Trusted by your favorite ranked
+                    bedwars servers.
+                </p>
+                <Button class="rbot-btn" href="/rbot">Download</Button>
+            </div>
+            <div>
+                <img src="/assets/img/stats.png" draggable="false" />
+            </div>
+        </section>
     </main>
 </Layout>
 
@@ -89,15 +133,19 @@ public class Command {
     main {
         overflow: hidden;
 
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
         header {
             position: relative;
+            overflow: hidden;
             z-index: 1;
 
             min-height: 350px;
             height: fit-content;
             width: 100%;
 
-            padding-bottom: 50px;
             margin: 0 auto;
 
             display: flex;
@@ -110,7 +158,7 @@ public class Command {
                 width: 1000px;
                 padding: 0 20px;
 
-                margin: 50px auto 0 auto;
+                margin: 30px auto;
 
                 display: flex;
                 flex-direction: column;
@@ -118,15 +166,19 @@ public class Command {
 
                 h1 {
                     max-width: 850px;
-                    color: #d7d5fe;
-                    font-size: 3em;
+                    color: white;
+                    font-size: 2.5em;
+
+                    @media (max-width: 700px) {
+                        font-size: 2em;
+                    }
                 }
 
                 pre {
                     position: absolute;
                     overflow: hidden;
 
-                    top: -50px;
+                    top: -20px;
                     right: -450px;
 
                     max-height: 620px;
@@ -159,7 +211,7 @@ public class Command {
                 gap: 15px;
 
                 i {
-                    color: #e0dfff;
+                    color: white;
                     font-size: 22px;
                     transition: opacity 0.2s ease;
 
@@ -172,18 +224,115 @@ public class Command {
                     }
                 }
             }
+
+            svg {
+                position: absolute;
+                top: 0;
+                z-index: -1;
+
+                height: 900px;
+                width: 900px;
+
+                pointer-events: none;
+                filter: blur(7em);
+            }
         }
 
-        svg {
-            position: absolute;
-            top: 0;
-            z-index: -1;
+        section {
+            max-width: 1000px;
+            margin: 0 auto;
 
-            height: 900px;
-            width: 900px;
+            display: flex;
+            flex-direction: column;
+        }
 
-            pointer-events: none;
-            filter: blur(7em);
+        .head-about {
+            height: 400px;
+            gap: 45px;
+
+            .card-wrap {
+                display: flex;
+                gap: 10px;
+            }
+
+            .quote-wrap {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                img {
+                    height: 48px;
+                    width: 48px;
+                    border-radius: 99em;
+                    filter: saturate(0);
+                }
+
+                p {
+                    text-align: left;
+                    color: lightgray;
+                    font-style: italic;
+                    font-size: 17px;
+                    font-weight: 500;
+                    line-height: 25px;
+                }
+            }
+        }
+
+        .rbot-cta {
+            height: 500px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+
+            div {
+                &:first-of-type {
+                    width: 600px;
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                &:last-of-type {
+                    width: 100%;
+                }
+            }
+
+            span {
+                width: fit-content;
+                padding: 5px 10px;
+
+                font-size: 14px;
+                font-weight: 500;
+
+                color: #48f091;
+                background-color: #48f09120;
+                border: 1px solid #48f091;
+                border-radius: 99em;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                color: lightgray;
+                font-size: 17px;
+                font-weight: 400;
+                line-height: 25px;
+            }
+
+            .rbot-btn {
+                width: fit-content;
+                margin-top: 5px;
+            }
+
+            img {
+                width: 100%;
+            }
         }
     }
 </style>

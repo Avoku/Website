@@ -1,0 +1,57 @@
+---
+interface Props {
+    icon: string
+    title: string
+}
+
+const { icon, title } = Astro.props
+---
+
+<div class="card">
+    <div class="title-wrap">
+        <i class={`fa-solid fa-${icon}`}></i>
+        <h1>{title}</h1>
+    </div>
+    <slot />
+</div>
+
+<style lang="scss" scoped>
+    div.card {
+        min-height: 150px;
+        width: 100%;
+        padding: 15px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        background-color: #1e2127;
+        box-shadow: 0 0 10px 0 #00000015;
+        border-radius: 12px;
+
+        transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        .title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 22px;
+        }
+
+        text-align: center;
+        color: lightgray;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+
+        &:hover {
+            background-color: #262a31;
+        }
+    }
+</style>
